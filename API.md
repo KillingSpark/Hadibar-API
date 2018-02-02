@@ -26,84 +26,100 @@ All requests (besides /session/getid) must include a sessionid as a header like 
         }
     })  
 
+There are two relevant models:
+1. Beverage
+    {
+        ID: long,
+        name: String,
+        price: int
+    }
+2. Account
+    {
+        ID: long,
+        name: String,
+        values: Map<String,String>
+    }
+The current amount of money an account has is stored in values["value"] as an integer representing cents.
+
+
 There are three groups of endpoints in the API:
 
 1. /session
-2. /beverages
-3. /accounts
+2. /beverage
+3. /account
 
 ## /session
 
 **Note**: If you get youself a new id and send this new id in the header your old login will *not* be connected with this new id 
 **URL**: /session/getid  
 **Method**: GET  
-**URL-Parmameters**: none  
-**Request-Payload**: none  
+**QueryParameters**: none  
+**FormParameters**: none  
 **Response**: sessionid if successful, "ERROR" if not. 
 
 **Note**: Connects the sessionid to an account on whose behalf the actions are executed by the server  
 **URL**: /session/login  
 **Method**: POST  
-**URL-Parmameters**: none  
-**Request-Payload**: _name, password_   
+**QueryParameters**: none  
+**FormParameters**: _name, password_   
 **Response**: nothing
 
 **Note**: Disconnects the sessionid from the old account. You may login with another account, or get a new sessionid  
 **URL**: /session/logout  
 **Method**: POST  
-**URL-Parmameters**: none  
-**Request-Payload**: none   
+**QueryParameters**: none  
+**FormParameters**: none   
 **Response**: nothing
 
 ## /beverage Get all the Drinks!
 **URL**: /beverage/all  
-**Method**: Get  
-**URL-Parmameters**: none  
-**Request-Payload**: none  
-**Response**: Array of beverages (see models for the representation of a beverage)  
+**Method**: Get
+**QueryParameters**: none  
+**FormParameters**: none  
+**Response**: Array of beverages  
   
-**URL**: /beverage/get/:id  
+**URL**: /beverage/get  
 **Method**: Get  
-**URL-Parmameters**: none  
-**Request-Payload**: none  
+**QueryParameters**: _id_ ID of the beverage 
+**FormParameters**: none  
 **Response**: the beverage specified by :id  
   
-**URL**: /beverage/update/:id   
+**URL**: /beverage/update   
 **Method**: POST  
-**URL-Parmameters**: none  
-**Request-Payload**: _value, name_: the new values for the beverage with ID=id  
+**QueryParameters**: _id_ ID of the beverage  
+**FormParameters**: _value, name_: the new values for the beverage with ID=id  
 **Response**: the updated beverage object if successful, "ERROR" if not.   
 
-**URL**: /beverage/delete/:id   
+**URL**: /beverage/delete   
 **Method**: DELETE  
-**URL-Parmameters**: none  
-**Request-Payload**: none  
+**QueryParameters**: _id_ ID of the beverage  
+**FormParameters**: none
 **Response**: nothing  
    
 **URL**: /beverage/new  
 **Method**: POST  
-**URL-Parmameters**: none  
-**Request-Payload**: _value, name_: the values for the new beverage  
+**QueryParameters**: none  
+**FormParameters**: _value, name_: the values for the new beverage  
 **Response**: the beverage object if successful, "ERROR" if not.  
 
 ## /accounts 
 
 **URL**: /account/all  
 **Method**: GET  
-**URL-Parmameters**: none  
-**Request-Payload**: none   
-**Response**: Array of all accounts (see models for representation of an account)  
+**QueryParameters**: none  
+**FormParameters**: none   
+**Response**: Array of all accounts  
 
-**URL**: /account/get/:id  
+**URL**: /account/get  
 **Method**: GET  
-**URL-Parmameters**: none  
-**Request-Payload**: none   
+**QueryParameters**: _id_ ID of the account 
+**FormParameters**: none   
 **Response**: the beverage object if successful, "ERROR" if not.  
 
-**URL**: /account/update/:id  
+**URL**: /account/update
 **Method**: POST  
-**URL-Parmameters**: none  
-**Request-Payload**: difference   
+**QueryParameters**: _id_ ID of the account  
+**FormParameters**: difference   
 **Response**: the updated account object if successful, "ERROR" if not.  
 
 
