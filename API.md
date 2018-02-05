@@ -44,59 +44,59 @@ The current amount of money an account has is stored in values["value"] as an in
 
 There are three groups of endpoints in the API:
 
-1. /session
-2. /beverage
-3. /account
+1. /api/session
+2. /api/f/:floor/beverage
+3. /api/f/:floor/account
 
-## /session
+## /api/session
 
 **Note**: If you get youself a new id and send this new id in the header your old login will *not* be connected with this new id 
-**URL**: /session/getid  
+**URL**: /api/session/getid  
 **Method**: GET  
 **QueryParameters**: none  
 **FormParameters**: none  
 **Response**: sessionid if successful, "ERROR" if not. 
 
 **Note**: Connects the sessionid to an account on whose behalf the actions are executed by the server  
-**URL**: /session/login  
+**URL**: /api/session/login  
 **Method**: POST  
 **QueryParameters**: none  
 **FormParameters**: _name, password_   
 **Response**: nothing
 
 **Note**: Disconnects the sessionid from the old account. You may login with another account, or get a new sessionid  
-**URL**: /session/logout  
+**URL**: /api/session/logout  
 **Method**: POST  
 **QueryParameters**: none  
 **FormParameters**: none   
 **Response**: nothing
 
 ## /beverage Get all the Drinks!
-**URL**: /beverage/all  
+**URL**: /api/f/:floor/beverage/all  
 **Method**: Get
 **QueryParameters**: none  
 **FormParameters**: none  
 **Response**: Array of beverages  
   
-**URL**: /beverage/get  
+**URL**: /api/f/:floor/beverage/get  
 **Method**: Get  
 **QueryParameters**: _id_ ID of the beverage 
 **FormParameters**: none  
 **Response**: the beverage specified by :id  
   
-**URL**: /beverage/update   
+**URL**: /api/f/:floor/beverage/update   
 **Method**: POST  
 **QueryParameters**: _id_ ID of the beverage  
 **FormParameters**: _value, name_: the new values for the beverage with ID=id  
 **Response**: the updated beverage object if successful, "ERROR" if not.   
 
-**URL**: /beverage/delete   
+**URL**: /api/f/:floor/beverage/delete   
 **Method**: DELETE  
 **QueryParameters**: _id_ ID of the beverage  
 **FormParameters**: none
 **Response**: nothing  
    
-**URL**: /beverage/new  
+**URL**: /api/f/:floor/beverage/new  
 **Method**: POST  
 **QueryParameters**: none  
 **FormParameters**: _value, name_: the values for the new beverage  
@@ -104,19 +104,19 @@ There are three groups of endpoints in the API:
 
 ## /accounts 
 
-**URL**: /account/all  
+**URL**: /api/f/:floor/account/all  
 **Method**: GET  
 **QueryParameters**: none  
 **FormParameters**: none   
 **Response**: Array of all accounts  
 
-**URL**: /account/get  
+**URL**: /api/f/:floor/account/get  
 **Method**: GET  
 **QueryParameters**: _id_ ID of the account 
 **FormParameters**: none   
 **Response**: the beverage object if successful, "ERROR" if not.  
 
-**URL**: /account/update
+**URL**: /api/f/:floor/account/update
 **Method**: POST  
 **QueryParameters**: _id_ ID of the account  
 **FormParameters**: difference   
