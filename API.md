@@ -48,6 +48,8 @@ There are three groups of endpoints in the API:
 2. /api/f/:floor/beverage
 3. /api/f/:floor/account
 
+All calls to the /api/f/:floor routes require you to be logged in to check wether you are allowed to see the data
+
 ## /api/session
 
 **Note**: If you get youself a new id and send this new id in the header your old login will *not* be connected with this new id 
