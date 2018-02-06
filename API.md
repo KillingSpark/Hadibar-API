@@ -45,8 +45,8 @@ The current amount of money an account has is stored in values["value"] as an in
 There are three groups of endpoints in the API:
 
 1. /api/session
-2. /api/f/:floor/beverage
-3. /api/f/:floor/account
+2. /api/f/beverage
+3. /api/f/account
 
 All calls to the /api/f/:floor routes require you to be logged in to check wether you are allowed to see the data
 
@@ -74,31 +74,31 @@ All calls to the /api/f/:floor routes require you to be logged in to check wethe
 **Response**: nothing
 
 ## /beverage Get all the Drinks!
-**URL**: /api/f/:floor/beverage/all  
+**URL**: /api/f/beverage/all  
 **Method**: Get
 **QueryParameters**: none  
 **FormParameters**: none  
 **Response**: Array of beverages  
   
-**URL**: /api/f/:floor/beverage/get  
+**URL**: /api/f/beverage/get  
 **Method**: Get  
 **QueryParameters**: _id_ ID of the beverage 
 **FormParameters**: none  
 **Response**: the beverage specified by :id  
   
-**URL**: /api/f/:floor/beverage/update   
+**URL**: /api/f/beverage/update   
 **Method**: POST  
 **QueryParameters**: _id_ ID of the beverage  
 **FormParameters**: _value, name_: the new values for the beverage with ID=id  
 **Response**: the updated beverage object if successful, "ERROR" if not.   
 
-**URL**: /api/f/:floor/beverage/delete   
+**URL**: /api/f/beverage/delete   
 **Method**: DELETE  
 **QueryParameters**: _id_ ID of the beverage  
 **FormParameters**: none
 **Response**: nothing  
    
-**URL**: /api/f/:floor/beverage/new  
+**URL**: /api/f/beverage/new  
 **Method**: POST  
 **QueryParameters**: none  
 **FormParameters**: _value, name_: the values for the new beverage  
@@ -106,19 +106,19 @@ All calls to the /api/f/:floor routes require you to be logged in to check wethe
 
 ## /accounts 
 
-**URL**: /api/f/:floor/account/all  
+**URL**: /api/f/account/all  
 **Method**: GET  
 **QueryParameters**: none  
 **FormParameters**: none   
 **Response**: Array of all accounts  
 
-**URL**: /api/f/:floor/account/get  
+**URL**: /api/f/account/get  
 **Method**: GET  
 **QueryParameters**: _id_ ID of the account 
 **FormParameters**: none   
 **Response**: the beverage object if successful, "ERROR" if not.  
 
-**URL**: /api/f/:floor/account/update
+**URL**: /api/f/account/update
 **Method**: POST  
 **QueryParameters**: _id_ ID of the account  
 **FormParameters**: difference   
